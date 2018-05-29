@@ -3,8 +3,9 @@
 const {resolve, join} = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-// const {GenerateSW} = require('workbox-webpack-plugin');
+const {GenerateSW} = require('workbox-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const pkg = require('./package.json');
 
@@ -63,18 +64,24 @@ const copyStatics = {
 /**
  * Plugin configuration
  */
-const sharedPlugins = [new webpack.DefinePlugin({'process.env': processEnv})];
+const sharedPlugins = [
+  new webpack.DefinePlugin({'process.env': processEnv}),
+  new MiniCssExtractPlugin({
+    filename: "[name].css",
+    allChunks: true
+  })
+];
 const devPlugins = [new CopyWebpackPlugin(copyStatics.copyWebcomponents)];
 const buildPlugins = [
   new CopyWebpackPlugin(
     [].concat(copyStatics.copyWebcomponents, copyStatics.copyOthers)
   ),
-  // new GenerateSW({
-  //   globDirectory: OUTPUT_PATH,
-  //   globPatterns: ['**/!(*map*)'],
-  //   globIgnores: ['**/sw.js'],
-  //   swDest: join(OUTPUT_PATH, 'sw.js')
-  // })
+  new GenerateSW({
+    globDirectory: OUTPUT_PATH,
+    globPatterns: ['**/!(*map*)'],
+    globIgnores: ['**/sw.js'],
+    swDest: join(OUTPUT_PATH, 'sw.js')
+  })
 ];
 
 const plugins = sharedPlugins.concat(IS_DEV_SERVER ? devPlugins : buildPlugins);
@@ -98,7 +105,11 @@ const shared = env => {
         {
           test: /\.pcss$/,
           use: ['text-loader', 'postcss-loader']
-        }
+        },
+        {
+          test: /\.(scss)$/,
+          use: [ MiniCssExtractPlugin.loader,'css-loader','postcss-loader','sass-loader' ]
+        },
       ]
     },
     plugins,
