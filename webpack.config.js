@@ -3,7 +3,6 @@
 const {resolve, join} = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const {GenerateSW} = require('workbox-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -67,21 +66,20 @@ const copyStatics = {
 const sharedPlugins = [
   new webpack.DefinePlugin({'process.env': processEnv}),
   new MiniCssExtractPlugin({
-    filename: "[name].css",
+    filename: "app.css",
     allChunks: true
+  }),
+  new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery'
   })
 ];
 const devPlugins = [new CopyWebpackPlugin(copyStatics.copyWebcomponents)];
 const buildPlugins = [
   new CopyWebpackPlugin(
     [].concat(copyStatics.copyWebcomponents, copyStatics.copyOthers)
-  ),
-  new GenerateSW({
-    globDirectory: OUTPUT_PATH,
-    globPatterns: ['**/!(*map*)'],
-    globIgnores: ['**/sw.js'],
-    swDest: join(OUTPUT_PATH, 'sw.js')
-  })
+  )
+  
 ];
 
 const plugins = sharedPlugins.concat(IS_DEV_SERVER ? devPlugins : buildPlugins);

@@ -2,78 +2,23 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-	<title>Polymer Skeleton</title>
+  <title>Sweet Portal</title>
 
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon.ico">
   <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#4c60e3">
   <meta name="msapplication-config" content="/assets/icons/browserconfig.xml">
   <script src="./vendor/webcomponents-loader.js"></script>
-  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./app.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-	<style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      font-size: calc(100% + 4 * (100vw - 600px) / 400);
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-      line-height: 1.5;
-      background-image: radial-gradient(50% 100%, #100307 0%, #000 100%);
-      overflow: hidden;
-      color: #FFF;
-      text-rendering: geometricPrecision;
-      -webkit-font-smoothing: antialiased;
-      margin: 0;
-      height: 100%;
-    }
-
-    .Loader {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-	</style>
 
   <script>
-     (function() {
-      if (!('serviceWorker' in navigator)) {
-        console.log('Service worker is not supported');
-        return;
-      }
-
-      navigator.serviceWorker.register('/sw.js')
-        .then(function(registration) {
-          registration.onupdatefound = function() {
-            if (navigator.serviceWorker.controller) {
-              var installingWorker = registration.installing;
-                installingWorker.onstatechange = function() {
-                  switch (installingWorker.state) {
-                    case 'installed':
-                      break;
-                    case 'redundant':
-                      throw new Error('The installing ' +
-                                      'service worker became redundant.');
-                    default:
-                      // Ignore
-                  }
-              };
-            }
-          };
-        }).catch(function(e) {
-          console.error('Error during service worker registration:', e);
-        });
-    })(); 
-
+    
     document.addEventListener('WebComponentsReady', function componentsReady() {
       document.removeEventListener('WebComponentsReady', componentsReady, false);
 
@@ -94,9 +39,133 @@
 </head>
 
 <body>
-	<sk-app unresolved name="Polymer Skeleton">
-    <div class="Loader">Loading...</div>
-  </sk-app>
+  <!-- Bootstrap NavBar -->
+  
+  <!-- NavBar END -->
+
+
+  <!-- Bootstrap row -->
+  <div class="row" id="body-row">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-md">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+              <img src="/assets/icons/sweet.jpg" width="30" height="30" class="d-inline-block align-top"
+                alt="">
+              <span class="menu-collapsed">Sweet systems</span>
+            </a>
+          </nav>
+      <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+      <!-- Bootstrap List Group -->
+      <ul class="list-group list-special">
+        <!-- Separator with title -->
+        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+          <small>MAIN MENU</small>
+        </li>
+        <!-- /END Separator -->
+        <!-- Menu with submenu -->
+        <a href="#submenu1" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span class="fa fa-dashboard fa-fw mr-3"></span>
+            <span class="menu-collapsed">Dashboard</span>
+            <span class="submenu-icon ml-auto"></span>
+          </div>
+        </a>
+        <!-- Submenu content -->
+        <div id='submenu1' class="collapse sidebar-submenu">
+          <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+            <span class="menu-collapsed">Charts</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+            <span class="menu-collapsed">Reports</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+            <span class="menu-collapsed">Tables</span>
+          </a>
+        </div>
+        <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span class="fa fa-user fa-fw mr-3"></span>
+            <span class="menu-collapsed">Profile</span>
+            <span class="submenu-icon ml-auto"></span>
+          </div>
+        </a>
+        <!-- Submenu content -->
+        <div id='submenu2' class="collapse sidebar-submenu">
+          <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+            <span class="menu-collapsed">Settings</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+            <span class="menu-collapsed">Password</span>
+          </a>
+        </div>
+        <a href="#" class="bg-dark list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span class="fa fa-tasks fa-fw mr-3"></span>
+            <span class="menu-collapsed">Tasks</span>
+          </div>
+        </a>
+        <!-- Separator with title -->
+        <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+          <small>OPTIONS</small>
+        </li>
+        <!-- /END Separator -->
+        <a href="#" class="bg-dark list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span class="fa fa-calendar fa-fw mr-3"></span>
+            <span class="menu-collapsed">Calendar</span>
+          </div>
+        </a>
+        <a href="#" class="bg-dark list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span class="fa fa-envelope-o fa-fw mr-3"></span>
+            <span class="menu-collapsed">Messages
+              <span class="badge badge-pill badge-primary ml-2">5</span>
+            </span>
+          </div>
+        </a>
+        <!-- Separator without title -->
+        <li class="list-group-item sidebar-separator menu-collapsed"></li>
+        <!-- /END Separator -->
+        <a href="#" class="bg-dark list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span class="fa fa-question fa-fw mr-3"></span>
+            <span class="menu-collapsed">Help</span>
+          </div>
+        </a>
+        <a href="#" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
+          <div class="d-flex w-100 justify-content-start align-items-center">
+            <span id="collapse-icon" class="fa fa-2x mr-3"></span>
+            <span id="collapse-text" class="menu-collapsed">Collapse</span>
+          </div>
+        </a>        
+      </ul>
+      <!-- List Group END-->
+    </div>
+    <!-- sidebar-container END -->
+
+    <!-- MAIN -->
+    <div class="col pr-0 pl-0">
+      <nav class="navbar navbar-dark bg-dark navbar-md">
+        <button class="navbar-toggler" type="button" data-toggle="sidebar-colapse" aria-controls="navbarToggleExternalContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </nav>
+      <sk-app unresolved name="Polymer Skeleton">
+        <div class="Loader">Loading...</div>
+      </sk-app>
+
+
+    </div>
+    <!-- Main Col END -->
+
+  </div>
+  <!-- body-row END -->
 
   <script src="./vendor/custom-elements-es5-adapter.js" nomodule></script>
   <script src="./vendor/webcomponents-loader.js"></script>
