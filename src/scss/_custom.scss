@@ -5,10 +5,30 @@ $body-color: #111;
     margin-left:0;
     margin-right:0;
 }
+
+/* Create a medium height at 40px */
+.navbar-md {min-height:40px}
+.navbar-md .navbar-brand,
+.navbar-md .navbar-nav>li>a {padding-top:10px; padding-bottom:10px}
+.navbar-md .navbar-brand {height: 40px}  
+.navbar-md .navbar-toggle {margin: 6px 12px 6px 0px; padding: 6px 7px 6px 7px;}
+.navbar-md .navbar-toggle .icon-bar {width: 19px;}
+
+
 #sidebar-container {
     min-height: 100vh;   
     background-color: #333;
     padding: 0;
+    .list-group {
+        a {
+            height: 50px;
+            color: white;
+        }
+    } 
+    .list-group .sidebar-submenu a {
+        height: 45px;
+        padding-left: 30px;
+    }
 }
 
 /* Sidebar sizes when expanded and collapsed */
@@ -21,21 +41,9 @@ $body-color: #111;
     transition:width 0.2s;
 }
 
-/* Menu item*/
-#sidebar-container {
-    .list-group {
-        a {
-            height: 50px;
-            color: white;
-        }
-    } 
-}
 
 /* Submenu item*/
-#sidebar-container .list-group .sidebar-submenu a {
-    height: 45px;
-    padding-left: 30px;
-}
+
 .sidebar-submenu {
     font-size: 0.9rem;
 }
@@ -81,10 +89,4 @@ $body-color: #111;
   }
 
 
-  /* Create a medium height at 40px */
-.navbar-md {min-height:40px}
-.navbar-md .navbar-brand,
-.navbar-md .navbar-nav>li>a {padding-top:10px; padding-bottom:10px}
-.navbar-md .navbar-brand {height: 40px}  
-.navbar-md .navbar-toggle {margin: 6px 12px 6px 0px; padding: 6px 7px 6px 7px;}
-.navbar-md .navbar-toggle .icon-bar {width: 19px;}
+  

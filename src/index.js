@@ -15,18 +15,16 @@ $('#body-row .collapse').collapse('hide');
 $('#collapse-icon').addClass('fa-angle-double-left');
 
 // Collapse click
-$('[data-toggle=sidebar-colapse]').click(function () {
-  SidebarCollapse();
-});
+$('[data-toggle=sidebar-colapse]').click(sidebarCollapse);
 
-function SidebarCollapse() {
+function sidebarCollapse() {
   $('.menu-collapsed').toggleClass('d-none');
   $('.sidebar-submenu').toggleClass('d-none');
   $('.submenu-icon').toggleClass('d-none');
   $('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
 
   // Treating d-flex/d-none on separators with title
-  var SeparatorTitle = $('.sidebar-separator-title');
+  const SeparatorTitle = $('.sidebar-separator-title');
   if (SeparatorTitle.hasClass('d-flex')) {
     SeparatorTitle.removeClass('d-flex');
   } else {

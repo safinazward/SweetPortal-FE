@@ -17,9 +17,8 @@
     "test:lighthouse": "concurrently --kill-others \"http-server dist\" \"lighthouse --view http://localhost:8080\" ",
     "clean:lighthouse": "rm *.report.html",
     "lint": "xo && stylelint src/scss/*.scss src/components/**/*.pcss",
-    "release": "standard-version",
-    "postinstall": "node scripts/postinstall.js",
-    "start": "http-server dist -p $PORT"
+    "release": "standard-version",    
+    "start": "http-server dist -p 3000"
   },
   "xo": {
     "space": true,

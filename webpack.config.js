@@ -4,7 +4,7 @@ const {resolve, join} = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const pkg = require('./package.json');
 
@@ -66,7 +66,7 @@ const copyStatics = {
 const sharedPlugins = [
   new webpack.DefinePlugin({'process.env': processEnv}),
   new MiniCssExtractPlugin({
-    filename: "app.css",
+    filename: 'app.css',
     allChunks: true
   }),
   new webpack.ProvidePlugin({
@@ -79,7 +79,7 @@ const buildPlugins = [
   new CopyWebpackPlugin(
     [].concat(copyStatics.copyWebcomponents, copyStatics.copyOthers)
   )
-  
+
 ];
 
 const plugins = sharedPlugins.concat(IS_DEV_SERVER ? devPlugins : buildPlugins);
@@ -94,6 +94,7 @@ const shared = env => {
       path: OUTPUT_PATH,
       filename: IS_MODULE_BUILD ? 'module.bundle.js' : 'bundle.js'
     },
+    devtool: "source-map",
     module: {
       rules: [
         {
@@ -106,8 +107,8 @@ const shared = env => {
         },
         {
           test: /\.(scss)$/,
-          use: [ MiniCssExtractPlugin.loader,'css-loader','postcss-loader','sass-loader' ]
-        },
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+        }
       ]
     },
     plugins,
