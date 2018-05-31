@@ -1,10 +1,3 @@
-<img src="https://i.imgur.com/wWjqhW6.jpg" width="530">
-
-[![GitHub release](https://img.shields.io/github/release/PolymerX/polymer-skeleton.svg?style=flat-square)](https://github.com/PolymerX/polymer-skeleton)
-[![Build Status](https://travis-ci.org/PolymerX/polymer-skeleton.svg?style=flat-square&branch=master)](https://travis-ci.org/PolymerX/polymer-skeleton)
-[![GitHub issues](https://img.shields.io/github/issues/PolymerX/polymer-skeleton.svg?style=flat-square)](https://github.com/PolymerX/polymer-skeleton/issues)
-[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg?style=flat-square)](https://github.com/sindresorhus/xo)
-[![Polymer Skeleton](https://img.shields.io/badge/polymerX-SKELETON-435877.svg?style=flat-square)](https://github.com/PolymerX/polymer-skeleton)
 
 > Web app based on Polymer 3.x , Webpack, PostCSS.
 
@@ -108,4 +101,4 @@ Loading the `custom-element-es5-adapter.js` is necessary because the `custom ele
 
 ## License
 
-PolymerX © MIT
+ © MIT
