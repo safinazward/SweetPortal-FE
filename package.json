@@ -1,6 +1,6 @@
 {
-  "name": "sweetPortal",
-  "version": "1.0.0",
+  "name": "sweetportal",
+  "version": "1.0.1",
   "main": "src/index.js",
   "license": "MIT",
   "author": "Safinaz Awad <safinaz.awad@sweetsystems.se>",
@@ -12,15 +12,11 @@
     "build:prod": "webpack --env.BROWSERS=module --env.NODE_ENV=production && webpack --env.NODE_ENV=production --optimize-minimize",
     "dev": "webpack-dev-server --hot --inline",
     "dev:module": "webpack-dev-server --env.BROWSERS=module --hot --inline",
-    "pretest": "yarn linkbower && yarn build",
-    "test": "yarn lint && wct && yarn test:lighthouse",
+    "pretest": "npm run build",
+    "test": "npm run lint && wct && npm run test:lighthouse",
     "test:lighthouse": "concurrently --kill-others \"http-server dist\" \"lighthouse --view http://localhost:8080\" ",
-    "test:travis": "yarn pretest && yarn lint && wct",
     "clean:lighthouse": "rm *.report.html",
-    "posttest": "yarn rmbower",
-    "lint": "xo && stylelint src/components/**/*.pcss",
-    "linkbower": "node scripts/link-bower.js",
-    "rmbower": "node scripts/link-bower.js remove",
+    "lint": "xo && stylelint src/scss/*.scss src/components/**/*.pcss",
     "release": "standard-version",
     "postinstall": "node scripts/postinstall.js",
     "start": "http-server dist -p $PORT"
@@ -39,8 +35,10 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "7.0.0-beta.49",
     "@polymer/test-fixture": "PolymerX/test-fixture#3.0-preview",
     "autoprefixer": "8.4.1",
+    "babel-core": "6",
     "babel-loader": "7.1.4",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.6.1",
@@ -78,8 +76,7 @@
     "webpack-cli": "2.1.2",
     "webpack-dev-server": "3.1.4",
     "webpack-merge": "4.1.2",
-    "workbox-webpack-plugin": "3.2.0",
-    "xo": "0.21.0"
+    "xo": "0.21.1"
   },
   "dependencies": {
     "@polymer/polymer": "3.0.2",
