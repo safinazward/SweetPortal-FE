@@ -1,7 +1,8 @@
+# Sweet Portal
 
 > Web app based on Polymer 3.x , Webpack, PostCSS.
 
-## Features
+## Tech/framework used
 
 * [Webpack](https://webpack.js.org/) 4 with [MiniCssExtractPlugin](https://github.com/webpack-contrib/mini-css-extract-plugin) to bundle js files and extract css.
 * [webpack-dev-server](https://github.com/webpack/webpack-dev-server) with hot reloading active.
@@ -28,13 +29,16 @@ But as the features said, we are also transpiling the bundle for "oldie" browser
 
 ## Usage
 
-Clone this repository:
+#### Prerequisites
+1. Install [Nodejs](https://nodejs.org/en/) to use npm package manager.
+
+2. Clone this repository:
 
 ```bash
-git clone https://github.com/PolymerX/polymer-skeleton [your-app-name]
+git clone linktorepo [your-app-name]
 ```
 
-Start building your application!
+3. Install the dependencies in the local node_modules folder. 
 
 ```bash
 npm install
