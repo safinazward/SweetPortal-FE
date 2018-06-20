@@ -94,7 +94,7 @@ const shared = env => {
       path: OUTPUT_PATH,
       filename: IS_MODULE_BUILD ? 'module.bundle.js' : 'bundle.js'
     },
-    devtool: "source-map",
+    devtool: 'source-map',
     module: {
       rules: [
         {
